@@ -7,6 +7,6 @@ resources:
 
 images:
 - name: goserver
-  newName: evandrogubert/gitopsfc
+  newName: gubertevandro001/gitopsfc
   newTag: qertewrt543654retywrhgrwty456
 
