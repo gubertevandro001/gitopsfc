@@ -1,6 +1,6 @@
-name: CD Gitops
+name: CDGitops
 
-on:
+on: 
   push:
     branches: [main]
 
@@ -23,15 +23,15 @@ jobs:
 
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
-      with:
+      with: 
         kustomize-version: "3.6.1"
 
     - name: Update Kubernetes resources
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-    run: |
-      cd k8s
-      kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
+      run: |
+        cd k8s
+        kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
 
     - name: Commit
       run: |
@@ -42,5 +42,5 @@ jobs:
     - name: Push
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.TOKEN_GITHUB }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: gubertevandro001/gitopsfc
